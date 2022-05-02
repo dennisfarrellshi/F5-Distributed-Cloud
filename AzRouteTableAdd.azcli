@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#Variable Block
+Let resourceGroup="PAN_WFH"
+routetablename="PAN_WFH_Route_Table
+
+#Array of Networks
+declare -A networks
+networks=("KILL-GP-EAST" "KILL-GP-WEST" "KILL-GP-CENTRAL")
+declare -A address
+address=("")
+
+
+#Network Table Creation
+echo "Creating Network Tables"
+for (( i=0; i<${#networks[@]}; i++ )); do
+az network route-table route create -g $resourceGroup --route-table-name $routetablename -n ${Networks[i]} \
+--next-hop-type None --address-prefix ${address[i]}
+
+#List Network Tables
+az network List
+
